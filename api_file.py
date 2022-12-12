@@ -22,7 +22,7 @@ def init():
     dict_list = assign_p_value(load, dict_list)
     
 
-    return dict_list#build_render_json(dict_list)
+    return build_render_json(dict_list)
 
 
 def assign_p_value(load_value, power_plant_list):
@@ -30,7 +30,7 @@ def assign_p_value(load_value, power_plant_list):
     result_wind =  assign_p_value_by_plant_type(load_value, power_plant_type[2],power_plant_list)
     new_list = result_wind[0]
 
-    """""
+    
     result_gas = assign_p_value_by_plant_type(result_wind[1], power_plant_type[0],power_plant_list)
     for item in result_gas[0]:
         new_list.append(item)
@@ -38,24 +38,25 @@ def assign_p_value(load_value, power_plant_list):
     result_turbo = assign_p_value_by_plant_type(result_gas[1], power_plant_type[1],power_plant_list)
     for item in result_turbo[0]:
         new_list.append(item)
-    """
+    
     return new_list
 
 def assign_p_value_by_plant_type(rem_load_value, plant_type, power_plant_list):
     new_list = []
     load_val = rem_load_value
     print (load_val, plant_type,power_plant_list )
-    if load_val <= 0:
-        for item in power_plant_list:
-            item['p'] = 0
-            new_list.append(item)
-
-    elif plant_type == power_plant_type[2]:
+  
+    if plant_type == power_plant_type[2]:
         plant_list = get_plant_by_type(power_plant_list, plant_type)
-        for item in plant_list:
-            item['p'] = item['energy_per_hour']
-            new_list.append(item)
-            load_val -= item['p']
+        if load_val <= 0:
+            for item in plant_list:
+                item['p'] = 0
+                new_list.append(item)
+        else:
+            for item in plant_list:
+                item['p'] = item['energy_per_hour']
+                new_list.append(item)
+                load_val -= item['p']
 
     elif (plant_type == power_plant_type[0]) or (plant_type == power_plant_type[1]):
         plant_list = get_plant_by_type(power_plant_list, plant_type)
