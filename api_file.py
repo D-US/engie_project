@@ -5,7 +5,6 @@ import math
 
 app = Flask(__name__)
 
-#global variables
 power_plant_type = ['gasfired', 'turbojet', 'windturbine']
 fuels_type = ["gas(euro/MWh)", "kerosine(euro/MWh)", "co2(euro/ton)",  "wind(%)"]
 sorting_label = ['efficiency', 'pmin', 'pmax', 'unit_needed', 'energy_per_hour' ]
@@ -44,7 +43,6 @@ def assign_p_value(load_value, power_plant_list):
 def assign_p_value_by_plant_type(rem_load_value, plant_type, power_plant_list):
     new_list = []
     load_val = rem_load_value
-    print (load_val, plant_type,power_plant_list )
   
     if plant_type == power_plant_type[2]:
         plant_list = get_plant_by_type(power_plant_list, plant_type)

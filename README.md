@@ -12,34 +12,34 @@ More details on the installation of [Flask](https://flask.palletsprojects.com/en
 pip install Flask
 ```
 ### Download the project (via git clone, through the zip)
+```bash
+git clone https://github.com/D-US/engie_project.git
+```
 
+#### Run the project
+Open the CMD on the project folder
+```python
+python api_file.py
+```
+
+Next step go to postman and test the API
 
 
 ## Usage
 
-### The API is accessible through the port 888 and the route : productionplan 
-on a local machine and while using postman (on the post method) you can add for exmple link http://127.0.0.1:8888/productionplan
+### The API is accessible through the port: 8888,  the route: productionplan, and the method: POST
+On a local machine and while using postman (on the post method) you can add for exmple link http://127.0.0.1:8888/productionplan
 
-```python
-import foobar
+### Test on POSTMAN
 
-# returns 'words'
-foobar.pluralize('word')
+##### METHOD: POST
 
-# returns 'geese'
-foobar.pluralize('goose')
+#### HEADER
+    * KEY :  Content-Type
+    * VALUE : application/json
 
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
+#### BODY
+    Choose binary and import one of the payload.json file. (You can find some payload file inside the folder powerplant-coding) 
 
-## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
